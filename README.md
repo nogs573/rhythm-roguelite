@@ -1,4 +1,4 @@
-# rhythm-roguelite
+# typing-roguelite
 
 Untitled project celebrating my love for those typing games I played as a kid and my softspot for roguelikes.
 Development start - May 18th, 2023
