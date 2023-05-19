@@ -3,9 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 
-public class RingTrigger : MonoBehaviour
+public class ZoneTrigger : MonoBehaviour
 {
     public CinemachineVirtualCamera cam;
+    private ZoneManager zoneManager;
+
+    private void Start() 
+    {
+        zoneManager = FindObjectOfType<ZoneManager>();        
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -34,9 +40,9 @@ public class RingTrigger : MonoBehaviour
             cam = GameObject.Find("PlayerFollowCam").GetComponent<CinemachineVirtualCamera>();
             if (CameraSwitcher.ActiveCamera != cam)
                 CameraSwitcher.SwitchCamera(cam);
-        }
 
-        ZoneManager.SpawnZone();
+            zoneManager.SpawnZone();
+        }
 
         Debug.Log("Gained 50 gold!");    
     }
