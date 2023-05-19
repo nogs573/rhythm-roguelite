@@ -21,17 +21,25 @@ public static class CameraSwitcher
 
         foreach (CinemachineVirtualCamera c in cameras)
         {
-            if (c != camera && c.Priority != 0)
+            if (c != camera && c.Priority == 10)
             {
-                c.Priority = 0;
+                c.Priority = 2;
             }
         }
     }
 
     public static void Register(CinemachineVirtualCamera camera)
     {
+        int priority = -1;
         cameras.Add(camera);
-        Debug.Log("Camera registered: " + camera);
+        if (camera.gameObject.tag == "PlayerCam")
+            priority = 9;
+        else
+            priority = 2;
+        camera.Priority = priority;
+        cameras.Add(camera);
+
+        Debug.Log("Camera " + camera + " registered at priority " + priority);
     }
 
     public static void Unregister(CinemachineVirtualCamera camera)

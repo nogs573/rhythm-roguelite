@@ -14,10 +14,11 @@ public class RingTrigger : MonoBehaviour
 
         if (other.gameObject.CompareTag("Player"))
         {
-            cam = GameObject.Find("RingCam").GetComponent<CinemachineVirtualCamera>(); 
+            cam = this.gameObject.transform.GetChild(0).gameObject.GetComponent<CinemachineVirtualCamera>(); 
             if (CameraSwitcher.ActiveCamera != cam)
+            {
                 CameraSwitcher.SwitchCamera(cam);
-            Debug.Log("Got here");
+            }            
         }   
 
         Debug.Log("Type this to complete the challenge");
@@ -34,6 +35,8 @@ public class RingTrigger : MonoBehaviour
             if (CameraSwitcher.ActiveCamera != cam)
                 CameraSwitcher.SwitchCamera(cam);
         }
+
+        ZoneManager.SpawnZone();
 
         Debug.Log("Gained 50 gold!");    
     }
